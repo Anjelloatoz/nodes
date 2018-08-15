@@ -49,4 +49,30 @@ public class ServiceProxy {
             }
         });
     }
+
+    public void getMovieDetails(String movie_id, final GeneralCallback callback){
+        NetworkBroker.getInstance().sendGet(NetworkBroker.PATH_DETAILS+movie_id+"?", null, new CallbackNetwork() {
+            @Override
+            public void success(Object result) {
+                Log.d(this.getClass().getName(), "searchMovie SUCCESS: "+result.toString());
+                callback.success(result);
+            }
+
+            @Override
+            public void failure(int errorCode, String message) {
+                Log.e(this.getClass().getName(), "searchMovie FAILURE: "+message);
+                callback.failure(message);
+            }
+
+            @Override
+            public void networkFailure() {
+                Log.e(this.getClass().getName(), "searchMovie NETWORK FAILURE");
+            }
+
+            @Override
+            public void serverFailure() {
+                Log.e(this.getClass().getName(), "searchMovie SERVER FAILURE");
+            }
+        });
+    }
 }

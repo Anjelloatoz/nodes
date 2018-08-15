@@ -18,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String query = "English Patient";
+        String query = "English Patient"; //We use a test movie name.
         query = query.replaceAll(" ", "%20");
+        String movie_id = "409"; //We use a test id.
 
-        ServiceProxy.getInstance().searchMovies(query, new GeneralCallback() {
+        ServiceProxy.getInstance().getMovieDetails(movie_id, new GeneralCallback() {
             @Override
             public void success(Object result) {
                 Log.d(this.getClass().getName()+" SUCCESS: ", result.toString());

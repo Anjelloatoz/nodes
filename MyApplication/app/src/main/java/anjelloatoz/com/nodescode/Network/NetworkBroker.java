@@ -42,7 +42,7 @@ public class NetworkBroker {
     private static String URL = BASE_URL + API_VERSION;
     private static String API_KEY = "&api_key="+ BuildConfig.API_KEY;
     public static String PATH_SEARCH = URL + "/search/movie?"+"query=";
-    public static String PATH_DETAILS = URL + "/search/movie/";
+    public static String PATH_DETAILS = URL + "/movie/";
 
     private static NetworkBroker INSTANCE;
     private final Context context;
