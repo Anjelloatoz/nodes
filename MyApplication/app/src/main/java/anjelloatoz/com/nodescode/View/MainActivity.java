@@ -1,10 +1,10 @@
-package anjelloatoz.com.nodescode;
+package anjelloatoz.com.nodescode.View;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import anjelloatoz.com.nodescode.Network.GeneralCallback;
+import anjelloatoz.com.nodescode.R;
 import anjelloatoz.com.nodescode.Service.ServiceProxy;
 
 /**
@@ -18,19 +18,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String query = "English Patient"; //We use a test movie name.
+        String query = "Man"; //We use a test movie name.
         query = query.replaceAll(" ", "%20");
         String movie_id = "409"; //We use a test id.
 
-        ServiceProxy.getInstance().getMovieDetails(movie_id, new GeneralCallback() {
+        ServiceProxy.getInstance().searchMovies(query, new GeneralCallback() {
             @Override
             public void success(Object result) {
-                Log.d(this.getClass().getName()+" SUCCESS: ", result.toString());
+
             }
 
             @Override
             public void failure(String message) {
-                Log.e(this.getClass().getName()+" FAILURE: ", message);
+
             }
         });
     }
