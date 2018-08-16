@@ -4,7 +4,9 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import anjelloatoz.com.nodescode.Model.SearchResult;
 import anjelloatoz.com.nodescode.Network.CallbackNetwork;
 import anjelloatoz.com.nodescode.Network.GeneralCallback;
 import anjelloatoz.com.nodescode.Network.NetworkBroker;
@@ -29,6 +31,8 @@ public class ServiceProxy {
             @Override
             public void success(Object result) {
                 Log.d(this.getClass().getName(), "searchMovie SUCCESS: "+result.toString());
+                SearchResult searchResult = gson.fromJson((String) result, new TypeToken<SearchResult>() {
+                }.getType());
                 callback.success(result);
             }
 
